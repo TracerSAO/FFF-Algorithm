@@ -45,6 +45,7 @@ public:
     // set-Interface
     void setSize();
     void setRoot();
+
     // function-Interface
     bool isEmpty() const;       // 判断 tree 是否为空
     bool contains(BSTNode const &node) const;   // 判断元素在 tree 中是否存在
@@ -57,7 +58,7 @@ public:
     bool removeMIN();           // 移除 tree 中最小值
     bool removeMAX();           // 移除 tree 中最大值
     bool removeNode(commonType const &element);          // 移除 tree 中任意节点
-    
+
 private:
     bool _contains(BSTNode const &node) const;
     void _preOrder() const;
