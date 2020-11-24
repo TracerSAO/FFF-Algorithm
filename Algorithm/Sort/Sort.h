@@ -9,6 +9,9 @@ class Sort
 public:
     template <typename T>
     bool BubbleSort(std::vector<T>& _array);
+
+    template <typename T>
+    bool InsertSort(std::vector<T>& _array);
 private:
     template <typename T>
     void swap(T& left, T& right);
@@ -21,7 +24,7 @@ private:
 */
 template <typename T>
 void
-swap(T& left, T& right)
+Sort::swap(T& left, T& right)
 {
     T tmp = left;
     left = right;
@@ -46,12 +49,30 @@ Sort::BubbleSort(std::vector<T>& _array)
         for (auto xVSwho = _array.begin(); xVSwho != who; xVSwho++)
         {
             if (*xVSwho > *(xVSwho + 1))
-                swap(*xVSwho, *(xVSwho));
+                swap(*xVSwho, *(xVSwho + 1));
         }
     }
     return true;
 }
 
+template <typename T>
+bool
+Sort::InsertSort(std::vector<T>& _array)
+{
+    if (_array.size() == 1 || _array.size() == 0)
+        return true;
 
+    for (int i = 1; i < _array.size(); i++)
+    {
+        for (int j = i; j > 0; j--)
+        {
+            if (_array[j] < _array[j - 1])
+            {
+                swap(_array[j], _array[j - 1]);
+            }
+        }
+    }
+    return true;
+}
 
 #endif  //SORT_H
