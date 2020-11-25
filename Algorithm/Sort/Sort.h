@@ -52,25 +52,38 @@ Sort<T>::BubbleSort(std::vector<T>& _array)
     return true;
 }
 
+/**
+ * Function: Insert Sort
+ * Note: void
+ * Time: 11/24/2020
+*/
 template <typename T> bool
 Sort<T>::InsertSort(std::vector<T>& _array)
 {
     if (_array.size() == 1 || _array.size() == 0)
         return true;
 
-    for (int i = 1; i < _array.size(); i++)
+    for (int field = 1; field < _array.size(); field++)
     {
-        for (int j = i; j > 0; j--)
+        for (int subset = field; subset > 0; subset--)
         {
-            if (_array[j] < _array[j - 1])
+            if (_array[subset] < _array[subset - 1])
             {
-                swap(_array[j], _array[j - 1]);
+                swap(_array[subset], _array[subset - 1]);
             }
         }
     }
     return true;
 }
 
+
+/**
+ * Function: Shell Sort
+ * Note: 尚未完全理解，下列的实现，采用的《算法》 一书中的实现方式，
+ *      其中的元素遍历方式有点过于诡异，不是很能清楚的理解意图
+ *      对于 希尔排序 会对有序度较高的数组产生的消极影响暂未分析
+ * Time: 11/25/2020 
+*/
 template <typename T> bool
 Sort<T>::ShellSort(std::vector<T>& _array)
 {
