@@ -8,14 +8,16 @@ template <typename T> void setRandomVector(std::vector<T>& );
 
 int main()
 {
-    Sort testsort;
+    Sort<int> testsort;
     std::vector<int> _array(30);
     
     setRandomVector(_array);
 
     // testsort.BubbleSort(_array);
-    testsort.InsertSort(_array);
+    // testsort.InsertSort(_array);
+    testsort.ShellSort(_array);
 
+    std::cout << "Sequence order: ";
     for (auto it = _array.begin(); it != _array.end(); it++)
         std::cout << *it << ' ';
     std::cout << std::endl;
