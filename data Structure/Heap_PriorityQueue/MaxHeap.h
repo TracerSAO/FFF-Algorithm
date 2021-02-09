@@ -23,12 +23,24 @@ public:
 
     // 增 - 删 - 改 - 查
     void add(const T& value);
+
+    // 以下三个成员函数需要添加对于 “异常的处理”，即：判空的操作
+    // 因为使用的 GP ，所以无法像 Linux API 那样，直接将错误抛出为 -1
+    // 具体的实现方案，暂未想到，待后面填坑！
     const T& findMax() const;
-    T extractMax();
-    T extract_add(const T& value);
+    T        extractMax();
+    T        extract_add(const T& value);
 
     bool isEmpty() const;
-    int size() const;
+    int  size() const;
+    
+    // 临时添加
+    auto begin() {
+        return arrHeap.begin();
+    }
+    auto end() {
+        return arrHeap.end();
+    }
 
 private:
     int _parent(int index) const;
@@ -42,8 +54,7 @@ private:
 
     void _swap(T& lt, T& rt);
 
-// private:
-public:
+private:
     std::vector<T> arrHeap;
 };
 
@@ -61,15 +72,11 @@ template <typename T>
 MAXHeap<T>::MAXHeap(const std::vector<T>& ll)
 {
     arrHeap = ll;
-    printf("<<<>>>\n");
 
     int k = size() - 1;
     k = _parent(k);
-    for (int i = k; i >= 0; i--)  {
-        if (i % 1000 == 0)
-            printf("index = %d\n", i);
+    for (int i = k; i >= 0; i--)
         _siftDown(i);
-    }
 }
 
 template <typename T>
@@ -80,7 +87,7 @@ void MAXHeap<T>::add(const T& val)
 }
 
 template <typename T>
-const T& MAXHeap<T>::findMax() const { return arrHeap.at(0); }
+const T& MAXHeap<T>::findMax() const { return arrHeap[0]; }
 
 template <typename T>
 T MAXHeap<T>::extractMax()

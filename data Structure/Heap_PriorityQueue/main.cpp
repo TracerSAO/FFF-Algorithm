@@ -33,9 +33,5 @@ int main()
         printf("%d ", arr[i]);
     printf("\n");
 
-    for (int i = 0; i < num; i++)
-        printf("%d ", maxHeap.arrHeap[i]);
-    printf("\n");
-
     return 0;
 }
